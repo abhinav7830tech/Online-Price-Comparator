@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- Custom styles to match the specific horizontal screenshot layout -->
+<style>
+    .profile-wrapper {
+        padding: 30px;
+        background-color: white;
+        border-radius: 8px;
+        min-height: 50vh;
+    }
+
+    .profile-title {
+        font-size: 32px;
+        font-weight: 800;
+        color: #0f172a; /* Dark bold color */
+        margin-bottom: 40px;
+    }
+
+    .horizontal-form {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap; /* Allows wrapping on small mobile screens */
+        gap: 8px; /* Small gap between items */
+    }
+
+    .horizontal-form label {
+        font-size: 16px;
+        color: #334155;
+        font-weight: 500;
+        margin-right: 4px;
+    }
+
+    .horizontal-form input {
+        padding: 8px 12px;
+        border: 1px solid #cbd5e1;
+        border-radius: 4px;
+        font-size: 15px;
+        color: #1e293b;
+        margin-right: 15px; /* Space after each input box */
+    }
+
+    /* Specific widths to match the look */
+    .input-email { width: 250px; background-color: white; }
+    .input-phone { width: 180px; }
+
+    .save-btn-simple {
+        padding: 8px 20px;
+        border: 1px solid #cbd5e1;
+        background-color: #f1f5f9;
+        color: #0f172a;
+        font-size: 15px;
+        cursor: pointer;
+        border-radius: 4px;
+        transition: background 0.2s;
+    }
+
+    .save-btn-simple:hover {
+        background-color: #e2e8f0;
+    }
+</style>
+
+<div class="profile-wrapper">
+    <h1 class="profile-title">Profile</h1>
+
+    <form method="POST" class="horizontal-form">
+        <label>Username</label>
+        <input type="text" value="{{ session['user_email'] }}" readonly class="input-email">
+
+        <label>Phone number</label>
+        <input type="text" name="phone" value="{{ phone or '' }}" class="input-phone">
+
+        <button type="submit" class="save-btn-simple">Save</button>
+    </form>
+</div>
+
+{% endblock %}

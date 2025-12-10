@@ -1,0 +1,354 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --primary-dark: #0f172a;  /* Sidebar/Auth Left */
+    --primary-blue: #3b82f6;  /* Primary Buttons */
+    --primary-blue-hover: #2563eb;
+    --success-green: #10b981; /* Prices */
+    --bg-light: #f8fafc;      /* Dashboard Background */
+    --card-white: #ffffff;
+    --text-main: #334155;
+    --text-light: #64748b;
+    --border-color: #e2e8f0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: var(--bg-light);
+    color: var(--text-main);
+    height: 100vh;
+}
+
+/* ===========================
+   1. AUTH PAGES (Login/Register)
+   =========================== */
+.auth-page {
+    overflow: hidden;
+    background: white;
+}
+
+.auth-container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+}
+
+/* Left Side: Modern Gradient */
+.auth-left {
+    width: 50%;
+    background: linear-gradient(135deg, var(--primary-dark) 0%, #1e293b 100%);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 80px;
+    position: relative;
+}
+
+/* Add a subtle visual pattern to the left side */
+.auth-left::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(circle at top right, rgba(59, 130, 246, 0.1), transparent 40%);
+    pointer-events: none;
+}
+
+.auth-left h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.1;
+}
+
+.auth-left p {
+    font-size: 1.25rem;
+    color: #cbd5e1;
+    font-weight: 300;
+}
+
+/* Right Side: Clean Form */
+.auth-right {
+    width: 50%;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+
+.auth-right h3 {
+    font-size: 1.5rem;
+    color: var(--primary-dark);
+    margin-bottom: 30px;
+}
+
+.auth-right form {
+    width: 100%;
+    max-width: 400px;
+}
+
+.auth-right input {
+    width: 100%;
+    padding: 16px;
+    margin-bottom: 20px;
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    font-size: 15px;
+    transition: 0.2s;
+    background: #f9fafb;
+}
+
+.auth-right input:focus {
+    border-color: var(--primary-blue);
+    background: white;
+    outline: none;
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 16px;
+    background: var(--primary-blue);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-primary:hover {
+    background: var(--primary-blue-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.switch-link {
+    margin-top: 24px;
+    font-size: 14px;
+    color: var(--text-light);
+}
+
+.switch-link a {
+    color: var(--primary-blue);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+/* ===========================
+   2. DASHBOARD LAYOUT
+   =========================== */
+.layout {
+    display: flex;
+    height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 260px;
+    background: var(--primary-dark);
+    color: white;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 50px;
+    color: white;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.menu { list-style: none; }
+.menu-item a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    color: #94a3b8;
+    text-decoration: none;
+    border-radius: 10px;
+    margin-bottom: 8px;
+    font-weight: 500;
+    transition: 0.2s;
+}
+
+.menu-item.active a, .menu-item a:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+/* Main Content Area */
+.main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    background: var(--bg-light);
+}
+
+.navbar {
+    height: 80px;
+    background: white;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 40px;
+}
+
+.profile-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: white;
+    border: 1px solid var(--border-color);
+    padding: 8px 16px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.profile-btn:hover { background: #f8fafc; }
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    right: 40px;
+    top: 70px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    width: 200px;
+    z-index: 100;
+    padding: 8px;
+}
+.dropdown-menu.show { display: block; }
+
+.dropdown-menu a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px;
+    color: var(--text-main);
+    text-decoration: none;
+    border-radius: 8px;
+}
+.dropdown-menu a:hover { background: #f1f5f9; }
+.logout { color: #ef4444 !important; }
+
+/* Dashboard Content */
+.content { padding: 40px; }
+
+.page-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--primary-dark);
+    margin-bottom: 30px;
+}
+
+/* Search Bar */
+.search-area {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 40px;
+    background: white;
+    padding: 10px;
+    border-radius: 16px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.search-area input {
+    flex: 1;
+    border: none;
+    padding: 16px;
+    font-size: 16px;
+    outline: none;
+}
+
+.search-area button {
+    background: var(--primary-dark);
+    color: white;
+    border: none;
+    padding: 0 32px;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+/* Store Cards */
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+.store-card {
+    background: white;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border-color);
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-align: center;
+}
+
+.store-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.store-card h3 {
+    margin: 0 0 16px;
+    font-size: 18px;
+    color: var(--text-main);
+}
+
+/* The MONEY Color */
+.price {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--success-green);
+    margin-bottom: 8px;
+}
+
+.badge.no {
+    display: inline-block;
+    background: #fee2e2;
+    color: #ef4444;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.deal-btn {
+    display: block;
+    margin-top: 20px;
+    padding: 12px;
+    background: var(--success-green);
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: 0.2s;
+}
+
+.deal-btn:hover {
+    background: #059669; /* Darker Green */
+}

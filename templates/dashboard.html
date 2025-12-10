@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1 class="page-title">Price Comparison Dashboard</h1>
+
+<form method="POST" class="search-area">
+    <input name="query" type="text" value="{{ query or '' }}" placeholder="Search product e.g. iPhone 15">
+    <button type="submit">Compare Prices</button>
+</form>
+
+{% if product_title %}
+<h2 class="matched-title">Matched Product: {{ product_title }}</h2>
+{% endif %}
+
+{% if store_data %}
+<div class="card-container">
+    {% for store, info in store_data.items() %}
+    <div class="store-card">
+        <h3>{{ store }}</h3>
+
+        {% if not info.available %}
+            <span class="badge no">Not Available</span>
+        {% else %}
+            <div class="price">₹{{ info.price }}</div>
+        {% endif %}
+
+        {% if info.details %}
+        <p class="notes">{{ info.details }}</p>
+        {% endif %}
+
+        {% if info.available and info.link %}
+            <a class="deal-btn" target="_blank" href="{{ info.link }}">View Deal</a>
+        {% endif %}
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ title or "Online Price Comparator" }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+{% if session.get("user_email") %}
+<nav class="navbar">
+    <div class="brand">💸 PriceComparator</div>
+    <div class="nav-right">
+        <span class="profile">{{ session.get("user_email") }}</span>
+        <a href="/logout" class="logout-btn">Logout</a>
+    </div>
+</nav>
+{% endif %}
+
+<div class="page-content">
+    {% block content %}{% endblock %}
+</div>
+
+</body>
+</html>

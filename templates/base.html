@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Online Comparator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="layout">
+
+    <aside class="sidebar">
+        <div class="project-title">Online Comparator</div>
+        <ul class="menu">
+            <li class="menu-item active"><a href="/dashboard"><i class="ri-home-3-fill"></i> Dashboard</a></li>
+        </ul>
+    </aside>
+
+    <main class="main">
+        <div class="navbar">
+            <div></div>
+
+            {% if session.get('user_email') %}
+            <div class="dropdown">
+                <button class="profile-btn" onclick="toggleDropdown()">
+                    <i class="ri-user-3-fill"></i> {{ session['user_email'] }}
+                    <i class="ri-arrow-down-s-line"></i>
+                </button>
+
+                <div id="dropdownMenu" class="dropdown-menu">
+                    <a href="{{ url_for('profile') }}"><i class="ri-user-line"></i> My Profile</a>
+                    <a href="/logout" class="logout"><i class="ri-logout-circle-r-line"></i> Logout</a>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+
+        <div class="content">
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+</div>
+
+<script>
+function toggleDropdown() {
+   document.getElementById("dropdownMenu").classList.toggle("show");
+}
+
+window.onclick = function(event) {
+   if (!event.target.closest('.dropdown')) {
+      let dropdowns = document.getElementsByClassName("dropdown-menu");
+      for (let d of dropdowns) d.classList.remove('show');
+   }
+}
+</script>
+
+
+</body>
+</html>
